@@ -57,7 +57,10 @@ public class Luban implements Handler.Callback {
    */
   private File getImageCacheFile(Context context, String suffix) {
     if (TextUtils.isEmpty(mTargetDir)) {
-      mTargetDir = getImageCacheDir(context).getAbsolutePath();
+      File file = getImageCacheDir(context);
+      if (file != null) {
+          mTargetDir = file.getAbsolutePath();
+      }
     }
 
     String cacheBuilder = mTargetDir + "/" +
@@ -70,7 +73,10 @@ public class Luban implements Handler.Callback {
 
   private File getImageCustomFile(Context context, String filename) {
     if (TextUtils.isEmpty(mTargetDir)) {
-      mTargetDir = getImageCacheDir(context).getAbsolutePath();
+      File file = getImageCacheDir(context);
+      if (file != null) {
+        mTargetDir = file.getAbsolutePath();
+      }
     }
 
     String cacheBuilder = mTargetDir + "/" + filename;
